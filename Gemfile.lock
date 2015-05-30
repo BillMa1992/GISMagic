@@ -1,4 +1,20 @@
 GIT
+  remote: git://github.com/sferik/twitter.git
+  revision: b299925d22d9ccf75c50328cea34e3f0194e1a33
+  specs:
+    twitter (6.0.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      http (~> 0.8.4)
+      http-form_data (~> 1.0)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 664e1aae76dfab9735ff7fc0b61e286a27c9ff97
   specs:
@@ -38,6 +54,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (5.1.11)
       execjs
@@ -53,6 +70,7 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    buftok (0.2.0)
     builder (3.2.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -71,9 +89,21 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.5.2)
     hike (1.2.3)
+    http (0.8.12)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
@@ -89,11 +119,15 @@ GEM
       mime-types (>= 1.16, < 3)
     masonry-rails (0.2.4)
       railties
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.5)
     mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.6.1)
     multi_json (1.11.0)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
@@ -133,6 +167,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_oauth (0.3.1)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -155,6 +190,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1-x86-mingw32)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -179,5 +217,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sqlite3
   turbolinks
+  twitter!
   tzinfo-data
   uglifier (>= 1.3.0)
