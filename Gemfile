@@ -12,10 +12,10 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'devise', '~> 3.1.0.rc2'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', '~> 4.0.0'
 gem 'aws-sdk', '< 2.0'
 gem 'masonry-rails', '~>0.2.0'
-gem 'twitter', github: 'sferik/twitter'
+gem 'tweetstream', github: 'tweetstream/tweetstream'
 
 
 group :development, :test do

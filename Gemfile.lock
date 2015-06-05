@@ -1,29 +1,13 @@
 GIT
-  remote: git://github.com/sferik/twitter.git
-  revision: b299925d22d9ccf75c50328cea34e3f0194e1a33
+  remote: git://github.com/tweetstream/tweetstream.git
+  revision: c819dc5422cdf2c398ba5e03f22e06dc6181f762
   specs:
-    twitter (6.0.0)
-      addressable (~> 2.3)
-      buftok (~> 0.2.0)
-      equalizer (~> 0.0.9)
-      http (~> 0.8.4)
-      http-form_data (~> 1.0)
-      http_parser.rb (~> 0.6.0)
-      memoizable (~> 0.4.0)
-      multipart-post (~> 2.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
-
-GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: 664e1aae76dfab9735ff7fc0b61e286a27c9ff97
-  specs:
-    paperclip (4.2.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.5)
-      mime-types
-      mimemagic (= 0.3.0)
+    tweetstream (2.6.1)
+      daemons (~> 1.1)
+      em-http-request (>= 1.1.1)
+      em-twitter (~> 0.3)
+      multi_json (~> 1.3)
+      twitter (~> 5.12)
 
 GEM
   remote: http://rubygems.org/
@@ -83,26 +67,36 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    cookiejar (0.3.2)
+    daemons (1.2.2)
     devise (3.1.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    domain_name (0.5.24)
-      unf (>= 0.0.5, < 1.0.0)
+    em-http-request (1.1.2)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    em-twitter (0.3.5)
+      buftok (~> 0.2)
+      eventmachine (~> 1.0)
+      http_parser.rb (~> 0.6)
+      simple_oauth (~> 0.2)
     equalizer (0.0.11)
     erubis (2.7.0)
+    eventmachine (1.0.7)
     execjs (2.5.2)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
     hike (1.2.3)
-    http (0.8.12)
-      addressable (~> 2.3)
-      http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
+    http (0.6.4)
       http_parser.rb (~> 0.6.0)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
-    http-form_data (1.0.1)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.2.16)
@@ -122,7 +116,6 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.5)
-    mimemagic (0.3.0)
     mini_portile (0.6.2)
     minitest (5.6.1)
     multi_json (1.11.0)
@@ -131,6 +124,11 @@ GEM
     nokogiri (1.6.6.2-x86-mingw32)
       mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
+    paperclip (4.0.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.18.2-x86-mingw32)
     rack (1.5.3)
     rack-test (0.6.3)
@@ -183,6 +181,17 @@ GEM
     tilt (1.4.1)
     turbolinks (2.5.3)
       coffee-rails
+    twitter (5.14.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.4)
@@ -190,9 +199,6 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.1-x86-mingw32)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -209,7 +215,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   masonry-rails (~> 0.2.0)
-  paperclip!
+  paperclip (~> 4.0.0)
   pg
   rails (= 4.1.8)
   rails_12factor
@@ -217,6 +223,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   sqlite3
   turbolinks
-  twitter!
+  tweetstream!
   tzinfo-data
   uglifier (>= 1.3.0)
