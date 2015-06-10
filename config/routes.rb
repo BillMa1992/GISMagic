@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   root "pages#_home"
   get "portfolio" => "pages#_home"
   get "about" => "pages#about"
-  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
