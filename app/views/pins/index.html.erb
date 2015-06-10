@@ -1,25 +1,33 @@
-<%= render 'pages/home' unless user_signed_in? %>
-
-<div id="pins" class="transitions-enabled">
-  <% @pins.each do |pin| %>
-    <div class="box panel panel-default">
-      <%= link_to image_tag(pin.image.url(:medium)), pin %>
-      <div class="panel-body">
-        <%= pin.description %><br/>
-        <strong><%= pin.user.name if pin.user %></strong>
-        <% if pin.user == current_user %>
-          <div class="actions">
-            <%= link_to edit_pin_path(pin) do %>
-              <span class="glyphicon glyphicon-edit"></span>
-              Edit
-            <% end %>
-            <%= link_to pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <span class="glyphicon glyphicon-trash"></span>
-              Delete
-            <% end %>
-          </div>
-        <% end %>
+<% if user_signed_in? %>
+  <div id="pins" class="transitions-enabled">
+    <% @pins.each do |pin| %>
+      <div class="box panel panel-default">
+        <%= link_to image_tag(pin.image.url(:medium)), pin %>
+        <div class="panel-body">
+          <%= pin.description %><br/>
+          <strong><%= pin.user.name if pin.user %></strong>
+          <% if pin.user == current_user %>
+            <div class="actions">
+              <%= link_to edit_pin_path(pin) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+                Edit
+              <% end %>
+              <%= link_to pin, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+                Delete
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="jumbotron center">
+    <h1>Welcome to my home</h1>
+    <p>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-large"%>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-large"%>
+    </p>
+  </div>
+<% end %>

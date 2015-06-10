@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :pins
 
   devise_for :users
-  root "pins#index"
+  root "pages#_home"
+  get "portfolio" => "pages#_home"
   get "about" => "pages#about"
   
 
