@@ -1,0 +1,66 @@
+<html>
+<head>
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+  <!--[if lte IE 8]>
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v2/themes/css/cartodb.ie.css" />
+  <![endif]-->
+  <style>
+    html, body {width:100%; height:100%; padding: 0; margin: 0;}
+    #cartodb-map { width: 100%; height:100%; background: black;}
+  </style>
+
+
+  <script>
+    var map;
+
+    function init(){
+      // initiate leaflet map
+      map = new L.Map('cartodb-map', { 
+        center: [39.98,-75.23],
+        zoom: 12
+      })
+      
+      Drawlayers();
+      
+    }
+
+    function Drawlayers(){
+
+      L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+        attribution: 'Stamen'
+      }).addTo(map);
+
+      var layerUrl = 'https://mqyznb.cartodb.com/api/v2/viz/b03c38a0-2772-11e5-8e42-0e0c41326911/viz.json';
+
+      var selectedevent = document.getElementById("UserName");
+      var selectedname = selectedevent.options[selectedevent.selectedIndex].value;
+      var SQLValue = "SELECT * FROM bill_2_men where name = " + "'" + selectedname + "'";
+
+      // change the query for the first layer
+      var subLayerOptions = {
+        sql: SQLValue,
+        
+        cartocss: "#bill_2_men {first/marker-fill: #0011cc; first/marker-opacity: 0.02; first/marker-width: 120; first/marker-line-width: 0; first/marker-placement: point; first/marker-allow-overlap: true; first/marker-comp-op: lighten; second/marker-fill: #00cc11; second/marker-opacity: 0.04; second/marker-width:75; second/marker-line-width: 0; second/marker-placement: point; second/marker-allow-overlap: true; second/marker-comp-op: lighten; third/marker-fill: #00ff00; third/marker-opacity: 0.08; third/marker-width:30; third/marker-line-width: 0; third/marker-placement: point; third/marker-allow-overlap: true; third/marker-comp-op: lighten;}"
+      }
+
+      cartodb.createLayer(map, layerUrl)
+        .addTo(map)
+        .on('done', function(layer) {
+          layer.getSubLayer(0).set(subLayerOptions);       
+        }).on('error', function() {
+          //log the error
+      });
+    }
+
+  </script>
+
+</head>
+<body onload="init();">
+  <select id="UserName" onchange="Drawlayers();">
+    <option value="Bill">Bill's Points</option>
+    <option value="Qingyu">Qingyu's Points</option>
+  </select>
+  <div id='cartodb-map'></div>
+</body>
+</html>
