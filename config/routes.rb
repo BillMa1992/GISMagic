@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "portfolio" => "pages#_home"
   get "about" => "pages#about"
   get "demo2men" => "pages#demo2men"
+  get "demo1men" => "pages#demo1men"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,9 +1,102 @@
+<head>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <script>
+        var addressPoints = [
+        [39.9787, -75.2351, "1"],
+        [39.9763, -75.2361, "2"],
+        [39.9779, -75.2399, "3"],
+        [39.9769, -75.2327, "4"],
+        [39.975, -75.2402, "5"],
+        [39.9732, -75.2333, "6"],
+        [39.9734, -75.2292, "7"],
+        [39.9713, -75.2368, "8"],
+        [39.9761, -75.2282, "9"],
+        [39.9382, -75.1637, "10"],
+        [39.9369, -75.1681, "11"],
+        [39.9326, -75.1623, "12"],
+        [39.9416, -75.1691, "13"],
+        [39.9403, -75.1736, "14"],
+        [39.9345, -75.1743, "15"],
+        [39.9453, -75.1691, "16"],
+        [39.9398, -75.1781, "17"],
+        [39.944, -75.1626, "18"],
+        [39.9395, -75.1588, "19"],
+        [39.979, -75.1825, "20"],
+        [39.9466, -75.2368, "21"],
+        [39.9163, -75.2275, "22"],
+        [39.9308, -75.3254, "23"],
+        [39.979, -75.1664, "24"],
+        [39.9808, -75.163, "25"],
+        [39.9776, -75.164, "26"],
+        [39.9784, -75.1609, "27"],
+        [39.9805, -75.1585, "28"],
+        [39.9798, -75.1561, "29"],
+        [39.9784, -75.1564, "30"],
+        [39.9742, -75.1564, "31"],
+        [39.9769, -75.1527, "32"],
+        [39.9742, -75.1633, "33"],
+        [39.9719, -75.1479, "34"],
+        [39.9721, -75.152, "35"],
+        [39.9719, -75.1592, "36"],
+        [39.9819, -75.1523, "37"],
+        [39.9779, -75.1479, "38"],
+        [39.9763, -75.1455, "39"],
+        [39.9708, -75.1554, "40"],
+        [39.9674, -75.1506, "41"],
+        [39.9679, -75.1633, "42"],
+        [39.9703, -75.1688, "43"],
+        [39.9666, -75.1568, "44"],
+        [39.9247, -75.1805, "45"],
+        [39.959, -75.2646, "46"],
+        [39.9887, -75.2866, "47"]
+        ];
+    </script>
+
+</head>
 
 <div class="row">
     <div class="col-lg-12 text-center">
         <h2 class="section-heading">GIS Functions</h2>
     </div>
 </div>
+
+
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
+<!-- Example data. -->
+
+
+<div>
+    <div id='mapBox' style="left:10px; height:300px; width:100%";></div>
+    
+</div>
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYmlsbG1hIiwiYSI6IjU3ODQ5NjBmYmI1ZmE1OTgzMDhkMjkzZmU0ZjVkNWFkIn0.i9yTglcAfN3o4K9oTQkg3Q';
+        var map = L.mapbox.map('mapBox', 'mapbox.streets')
+            .setView([39.98,-75.23], 12);
+
+        var markers = new L.MarkerClusterGroup();
+
+        for (var i = 0; i < addressPoints.length; i++) {
+            var a = addressPoints[i];
+            var title = a[2];
+            var marker = L.marker(new L.LatLng(a[0], a[1]), {
+                icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+                title: title
+            });
+            marker.bindPopup(title);
+            markers.addLayer(marker);
+        }
+
+    map.addLayer(markers);
+</script>
+
+
+
+
 
 <div id="portfolio" class="container transitions-enabled">
     <div class="portfolio-item panel panel-default">
